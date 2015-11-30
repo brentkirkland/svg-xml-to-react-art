@@ -59,7 +59,6 @@ var Paste = React.createClass({
 
       //get the text
       art.text = this.getCompleteText(art);
-      console.log('art', art);
       Actions.convert(art);
       //pass to stores
     }
@@ -70,7 +69,6 @@ var Paste = React.createClass({
     text = "<Surface height={" + art.size.y + "} width={" + art.size.x + "}>\n";
     text = text + this.getChildrenText(art, art.layers, 1)
     text = text + "</Surface>";
-    console.log('text', text);
     return text;
 
   },
@@ -100,7 +98,6 @@ var Paste = React.createClass({
         text = text + this.indents(indentcount);
       }
     }
-    //console.log(text);
     return text;
   },
   getColor: function(art, className){
@@ -223,7 +220,7 @@ var style = {
     borderRadius: 2,
     marginTop: 10,
     width: 700,
-    height: 200,
+    height: 150,
   }
 }
 
