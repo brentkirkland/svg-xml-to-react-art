@@ -55,9 +55,66 @@ var Paste = React.createClass({
         classInfo:  this.getClassInfo(xmlDoc.getElementsByTagName("style")[0].textContent),
         layers: this.getPaths(xmlDoc),
       }
+
+
+      //get the text
+      art.text = this.getCompleteText(art);
+      console.log('art', art);
       Actions.convert(art);
       //pass to stores
     }
+  },
+  getCompleteText: function(art){
+    var text = "";
+
+    text = "<Surface height={" + art.size.y + "} width={" + art.size.x + "}>\n";
+    text = text + this.getChildrenText(art, art.layers, 1)
+    text = text + "</Surface>";
+    return text;
+
+  },
+  getChildrenText: function(art, children, indentcount){
+    var text = this.indents(indentcount);
+    for (var i = 0; i < children.length; i++){
+      if (children[i].name === 'path') {
+        text = text + "<Shape d={\'" + children[i].attributes.d + "\'} fill={\'" + this.getColor(art, children[i].attributes.class) + "\'}>\n";
+      }
+      if (children[i].name === 'g') {
+        text = text + "<Group>\n"
+      }
+
+
+      if(children[i].children.length > 0){
+        text = text + this.getChildrenText(art, children[i].children, indentcount + 1);
+      }
+      text = text + this.indents(indentcount);
+
+      if (children[i].name === 'path') {
+        text = text + "</Shape>\n";
+      }
+      if (children[i].name === 'g') {
+        text = text + "</Group>\n"
+      }
+      if (i < children.length - 1) {
+        text = text + this.indents(indentcount);
+      }
+    }
+    //console.log(text);
+    return text;
+  },
+  getColor: function(art, className){
+    for(var i = 0; i < art.classInfo.length; i++){
+      if (className === art.classInfo[i].name) {
+        return art.classInfo[i].color;
+      }
+    }
+  },
+  indents: function(indentcount){
+    var text = "";
+    for (var i = 0; i < indentcount; i++){
+      text = text + '\t';
+    }
+    return text;
   },
   getClassInfo: function(text) {
     //loop through once, for linear time and
