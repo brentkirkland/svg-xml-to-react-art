@@ -1,13 +1,22 @@
 # svg-xml-to-react-art
 Convert SVG XML code to React Art javascript code. Built with React, React Art, and Flux.
 
+## Installation
+run the following after cloning the repo:
+
+```bash
+ npm install
+ webpack-dev-server
+ ```
+then open localhost:8080 in your favorite browser.
+
 ## How To Convert
 1. Save Illustrator file as an SVG.
 2. Within the SVG options, click SVG Code.
 3. Copy and paste SVG XML code into app.
 4. Get nice React Art javascript!
 
-Here's some sample code:
+Here's some sample code if you wanna test it out!:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -143,15 +152,6 @@ Here's some sample code:
 
 ```
 (Paste that into the app)
-
-## Installation
-run the following after cloning the repo:
-
-```bash
- npm install
- webpack-dev-server
- ```
-then open localhost:8080 in your favorite browser.
 
 ## TODO
  * Text transformation
