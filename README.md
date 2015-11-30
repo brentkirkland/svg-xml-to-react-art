@@ -1,5 +1,5 @@
 # svg-xml-to-react-art
-Convert SVG XML code to React Art javascript code.
+Convert SVG XML code to React Art javascript code. Built with React, React Art, and Flux.
 
 ## How To Convert
 1. Save Illustrator file as an SVG.
