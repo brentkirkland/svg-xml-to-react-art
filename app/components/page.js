@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require( 'react-dom');
 var TopBar =  require('./topbar.js');
+var Code =  require('./code.js');
 var Paste = require('./paste.js');
 var Store = require('../stores/store');
 //var SurfaceRender = require('./surfacerender.js');
@@ -34,9 +35,10 @@ var Page = React.createClass({
     return (
         <div style={style.window}>
           <div id={'page'} style={style.page}>
-            <TopBar/>
+
             {this.renderSurface()}
             <Paste/>
+            {this.renderCode()}
           </div>
         </div>
       )
@@ -44,9 +46,19 @@ var Page = React.createClass({
   _onChange: function() {
     this.setState(getData());
   },
-  renderSurface(){
+  renderCode(){
     if (this.state.data === undefined) {
       return;
+    } else {
+      console.log(this.state.data.text);
+      return (
+        <Code text={this.state.data.text} />
+      )
+    }
+  },
+  renderSurface(){
+    if (this.state.data === undefined) {
+      return <TopBar/>
     } else {
       return (
         <Surface height={42} width={70}>
@@ -62,7 +74,7 @@ var Page = React.createClass({
               </Shape>
             </Group>
           </Group>
-        </Surface >
+        </Surface>
       )
     }
   }

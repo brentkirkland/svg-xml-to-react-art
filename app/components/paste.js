@@ -70,6 +70,7 @@ var Paste = React.createClass({
     text = "<Surface height={" + art.size.y + "} width={" + art.size.x + "}>\n";
     text = text + this.getChildrenText(art, art.layers, 1)
     text = text + "</Surface>";
+    console.log('text', text);
     return text;
 
   },
@@ -112,7 +113,7 @@ var Paste = React.createClass({
   indents: function(indentcount){
     var text = "";
     for (var i = 0; i < indentcount; i++){
-      text = text + '\t';
+      text = text + '  ';
     }
     return text;
   },
@@ -213,18 +214,15 @@ var style = {
   },
   topBarDiv: {
     marginTop: 10,
-    paddingTop: 20,
     width: 700,
     borderRadius: 2,
   },
   textarea: {
     fontFamily: ['brandon-grotesque', "Helvetica Neue", "Helvetica", "Segoe UI", "Arial", "freesans", "sans-serif", "Segoe UI Emoji", "Segoe UI Symbol",],
-    fontSize: 18,
-    padding: 5,
+    fontSize: 16,
     borderRadius: 2,
-    margin: 20,
     marginTop: 10,
-    width: 651,
+    width: 700,
     height: 200,
   }
 }

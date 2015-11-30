@@ -7,7 +7,7 @@ Convert SVG XML code to React Art javascript code.
 3. Copy and paste SVG XML code into app.
 4. Get nice React Art javascript!
 
-Here's some sample code: 
+Here's some sample code:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -30,13 +30,14 @@ Here's some sample code:
 ## Installation
 run the following after cloning the repo:
 
-```bash 
+```bash
  npm install
  webpack-dev-server
  ```
 then open localhost:8080 in your favorite browser.
- 
+
 ## TODO
  * Text transformation
  * Animations
  * In app editor
+ * Better CSS
